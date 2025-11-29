@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Music Player</title>
+    <!-- Added Google Fonts link -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div id="authCheck" style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: 'Poppins', sans-serif;">
+        <p>Checking authentication...</p>
+    </div>
+    <div id="playerContainer" class="music-player-container" style="display: none;">
+        <div class="player-header">
+            <img id="player-logo" src="logo.png" alt="RM Player Logo" />
+            <h1 class="player-title">RM Player</h1>
+        </div>
+        <div id="clock" class="clock"></div>
+        <div class="now-playing">
+            <img id="album-cover" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMDAwMDAwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5BbGJ1bSBDb3ZlcjwvdGV4dD48L3N2Zz4=" alt="Album Cover" />
+            <div class="song-info">
+                <h2 id="song-title">Song Title</h2>
+                <h3 id="artist">Artist Name</h3>
+            </div>
+        </div>
+        <audio id="audio-player" preload="metadata"></audio>
+        <div class="controls">
+            <button id="prev-btn" class="control-btn" aria-label="Previous Track">⏮</button>
+            <button id="play-btn" class="control-btn play-btn" aria-label="Play/Pause">▶</button>
+            <button id="next-btn" class="control-btn" aria-label="Next Track">⏭</button>
+        </div>
+        <div class="progress-container" aria-label="Audio progress bar" role="slider" tabindex="0">
+            <div class="progress-bar">
+                <div id="progress" class="progress-fill"></div>
+            </div>
+            <div class="time-display" aria-live="polite">
+                <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+            </div>
+        </div>
+        <div class="volume-control">
+            <label for="volume-slider">Volume</label>
+            <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="Volume slider"/>
+        </div>
+        <div class="add-music">
+            <button id="add-music-btn" class="add-music-btn">Add Music</button>
+            <input id="file-input" type="file" multiple accept="audio/*" style="display: none;" />
+        </div>
+        <div class="playlist">
+            <h3>Playlist</h3>
+            <button id="playall-playlist" class="playall-btn">Play All Playlist</button>
+            <ul id="song-list">
+                <!-- Songs will be added here -->
+            </ul>
+        </div>
+        <div class="favorites">
+            <h3>Favorites</h3>
+            <button id="playall-favorites" class="playall-btn">Play All Favorites</button>
+            <ul id="favorite-list">
+                <!-- Favorite songs will be added here -->
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
